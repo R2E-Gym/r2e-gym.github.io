@@ -90,10 +90,10 @@
                         </span>
                         <span class="link-block">
                             <a href="https://huggingface.co/R2E-Gym" class="external-link button is-dark">
-                                <span class="icon">
+                                <!-- <span class="icon">
                                     <i class="fab fa-github"></i>
-                                </span>
-                                <span>Data</span>
+                                </span> -->
+                                <span>🤗 Data & Models</span>
                             </a>
                         </span>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="columns is-centered">
                         <div class="column is-4"
                             style="display: flex; flex-direction: column; justify-content: center;">
-                            <img src="./assets/r2egym/overview-p1.png" alt="Synthetic Data Generation"
+                            <img src="./assets/r2egym/overview-p1-v10.png" alt="Synthetic Data Generation"
                                 style="object-fit: contain; height: 280px;" />
                         </div>
                         <div class="column is-4"
@@ -137,7 +137,7 @@
                     <div class="highlight-box"
                         style="background: linear-gradient(to right, #f8fafc, #f1f5f9); border-radius: 12px; border-left: 6px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
                         <h3 class="title is-4 has-text-centered"
-                            style="margin-bottom: 1.5rem; color: var(--primary-color);">🚀 Key Innovations</h3>
+                            style="margin-bottom: 1.5rem; color: var(--primary-color);">🚀 Key Contributions </h3>
 
                         <div style="display: flex; flex-direction: column; gap: 1.2rem;">
                             <div class="innovation-item" style="display: flex; align-items: flex-start; gap: 0.8rem;">
@@ -146,10 +146,12 @@
                                     🔮
                                 </div>
                                 <div>
-                                    <h4 style="font-weight: 600; margin-bottom: 0.2rem; font-size: 1.1rem;">SWE-Gen Data
+                                    <h4 style="font-weight: 600; margin-bottom: 0.2rem; font-size: 1.1rem;">SWE-Gen
+                                        Data
                                         Engine</h4>
                                     <p style="margin: 0; line-height: 1.4;">Generates 8.1K executable environments
-                                        directly from commits with automated tests and natural language descriptions</p>
+                                        directly from commits with automated tests and natural language descriptions
+                                    </p>
                                 </div>
                             </div>
 
@@ -174,7 +176,8 @@
                                 <div>
                                     <h4 style="font-weight: 600; margin-bottom: 0.2rem; font-size: 1.1rem;">SOTA
                                         Performance</h4>
-                                    <p style="margin: 0; line-height: 1.4;">51% success rate on SWE-Bench with just 26
+                                    <p style="margin: 0; line-height: 1.4;">51% success rate on SWE-Bench with just
+                                        26
                                         rollouts — 19% higher than previous open-weight models</p>
                                 </div>
                             </div>
@@ -196,9 +199,9 @@
                             programming challenges. While LLM-based SWE agents have demonstrated impressive
                             capabilities, current state-of-the-art performance is predominantly achieved by proprietary
                             models, with open-source alternatives lagging significantly behind.
-                            Closing this performance gap requires addressing two core challenges: First, we need
+                            Closing this performance gap requires addressing two core challenges: <b>First</b>, we need
                             scalable methods to curate diverse, high-quality execution environments for training.
-                            Second, we need optimal strategies for utilizing test-time compute to maximize performance.
+                            <b>Second</b>, we need efficient strategies for scaling test-time compute.
                         </p>
 
                         <p>
@@ -284,7 +287,7 @@
                                     <img src="./assets/r2egym/r2e_gym_subset_repo_distribution.png"
                                         alt="Subset Dataset Distribution" style="object-fit: contain; height: 280px;" />
                                     <p class="figure-caption" style="margin-top: 1rem;">
-                                        Subset (decontaminated) dataset distribution
+                                        Subset (non overlapping with SWE-Bench) dataset distribution
                                     </p>
                                 </div>
                             </div>
@@ -292,7 +295,7 @@
                                 <b>Figure 2:</b> Dataset composition showing the diversity of repositories
                                 and problems in our synthetic dataset, enabling significantly larger and more diverse
                                 training environments than previous methods. Left: Full R2E-Gym dataset. Right:
-                                R2E-Gym-Subset decontaminated subset.
+                                R2E-Gym subset (non-overlapping with SWE-Bench) used for training.
                             </p>
                         </div>
                     </div>
@@ -301,7 +304,7 @@
                     <p>
                         We use the R2E-Gym dataset to train our R2E-Gym-32B agent, a 32B parameter model
                         based on the Qwen model trained on high-quality trajectories collected on the R2E-Gym dataset.
-                        Our model achieves 34.4% Pass@1 performance on the SWE-Bench Verified benchmark.
+                        Our model achieves SOTA - 34.4% Pass@1 performance on the SWE-Bench Verified benchmark.
 
                     </p>
                     <br />
@@ -328,10 +331,17 @@
                     <h2 class="title is-3">Hybrid Verifiers: Inference-Time Scaling</h2>
 
                     <p>
-                        Even with high-quality training data, software engineering agents face a critical challenge
+                        We introduce Hybrid Test-time Scaling, a novel paradigm for scaling test-time compute.
+                        We show that while both execution-based and execution-free verifiers elicit inference-time
+                        gains;
+                        they exhibit complementary strengths and weakness.
+                        Leveraging the strengths of each approach allows significantly better performance when scaling
+                        test-time compute - resulting in a 51% pass@1 performance on the SWE-Bench Verified benchmark,
+                        reflecting a new state-of-the-art for open-weight SWE-Agents.
+                        <!-- Even with high-quality training data, SWE-Agents face a critical challenge
                         at inference time: identifying the best solution among multiple candidates. Our analysis of
                         verification approaches revealed their complementary nature, leading to our breakthrough hybrid
-                        verification system.
+                        verification system. -->
                     </p>
 
                     <h3 class="title is-4">Execution-Based Verifier Limitations</h3>
